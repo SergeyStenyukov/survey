@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgrespass
+      - POSTGRES_DB=surveybase
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    image: survey
+    build: .
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/surveybase
+    ports:
+      ["8080:8080"]
+    depends_on:
+      - db
+    volumes:
+    - /target:/app.jar
+volumes:
+  pgdata:

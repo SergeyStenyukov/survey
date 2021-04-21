@@ -13,25 +13,25 @@ import java.util.List;
 @Service
 public class SurveyServiceImpl implements SurveyService {
 
-    private final SurveyRepository repository;
+    private final SurveyRepository surveyRepository;
 
-    public SurveyServiceImpl(SurveyRepository repository) {
-        this.repository = repository;
+    public SurveyServiceImpl(SurveyRepository surveyRepository) {
+        this.surveyRepository = surveyRepository;
     }
 
     @Override
     public void saveOrUpdate(Survey survey) {
-        repository.save(survey);
+        surveyRepository.save(survey);
     }
 
     @Override
     public List<Survey> getAll() {
-        return repository.findAll();
+        return surveyRepository.findAll();
     }
 
     @Override
     public void deleteById(long id) {
-        repository.deleteById(id);
+        surveyRepository.deleteById(id);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class SurveyServiceImpl implements SurveyService {
         List<Question> surveyQuestions = survey.getQuestions();
         surveyQuestions.add(question);
         survey.setQuestions(surveyQuestions);
-        repository.save(survey);
+        surveyRepository.save(survey);
     }
 
     @Override
@@ -49,15 +49,20 @@ public class SurveyServiceImpl implements SurveyService {
         List<Question> surveyQuestions = survey.getQuestions();
         surveyQuestions.remove(question);
         survey.setQuestions(surveyQuestions);
-        repository.save(survey);
+        surveyRepository.save(survey);
     }
 
     @Override
     public List<Survey> getUnfinishedSurveys() {
-        return repository.getSurveyByFinishedDateAfter(LocalDate.now());
+        return surveyRepository.getSurveyByFinishedDateAfter(LocalDate.now());
+    }
+
+    @Override
+    public Survey getById(long id) {
+        return findByIdOrThrowNotFound(id);
     }
 
     private Survey findByIdOrThrowNotFound(long id) {
-        return repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Cannot find by id=" + id));
+        return surveyRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Cannot find by id=" + id));
     }
 }

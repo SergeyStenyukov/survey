@@ -23,6 +23,7 @@ import static com.fabrique.survey.api.QuestionResource.BASE_URL;
 @RestController
 @RequestMapping(BASE_URL)
 @Api(value = "Questions", tags = "Questions")
+@PreAuthorize("hasRole('ADMIN')")
 public class QuestionResource {
 
     public static final String BASE_URL = "api/questions";

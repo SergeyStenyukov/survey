@@ -119,4 +119,16 @@ public class Survey implements Serializable {
     public int hashCode() {
         return Objects.hash(id, name, description, createdDate, finishedDate, questions);
     }
+
+    @Override
+    public String toString() {
+        return "Survey{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", createdDate=" + createdDate +
+                ", finishedDate=" + finishedDate +
+                ", questions=" + questions +
+                '}';
+    }
 }

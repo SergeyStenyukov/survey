@@ -18,4 +18,6 @@ public interface SurveyService {
     void addQuestion(long id, Question question);
 
     void removeQuestion(long id, Question question);
+
+    Survey getById(long id);
 }
