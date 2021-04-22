@@ -1,17 +1,19 @@
 CREATE TABLE IF NOT EXISTS surveys(
     id BIGINT NOT NULL AUTO_INCREMENT,
-    name varchar(100) NOT NULL UNIQUE,
+    name varchar(100) NOT NULL,
     description varchar(255),
     created_date TIMESTAMP NOT NULL,
     finished_date TIMESTAMP NOT NULL,
-PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE KEY name_unique (name)
 );
 
 CREATE TABLE IF NOT EXISTS questions(
     id BIGINT NOT NULL AUTO_INCREMENT,
-    question VARCHAR(255) NOT NULL UNIQUE,
+    question VARCHAR(255) NOT NULL,
     type VARCHAR(10) NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE KEY question_unique (question)
 );
 
 CREATE TABLE IF NOT EXISTS surveys_questions(
