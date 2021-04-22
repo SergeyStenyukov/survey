@@ -2,7 +2,8 @@
 
 
 # Application running in docker containers
-Download archive. Unzip. Use command line and move to directory you have unzipped + \survey\src\main\java\docker
+Download archive. Unzip. Use command line and move to directory you have unzipped project + \survey\src\main\java\docker
+
 To get start use command: docker-compose up
 
 # Endpoints
