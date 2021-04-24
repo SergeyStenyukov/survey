@@ -2,9 +2,9 @@
 
 
 # Application running in docker containers
-Download archive. Unzip. Use command line and move to directory you have unzipped project + \survey\src\main\java\docker
+Download archive. Unzip.
 
-To get start use command: docker-compose up
+To get start use command from '/survey' directory : docker compose up
 
 # Endpoints
 http://localhost:8080/swagger-ui/
