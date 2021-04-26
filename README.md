@@ -4,7 +4,7 @@
 # Application running in docker containers
 Download archive. Unzip.
 
-To get start use command from '/survey' directory : docker compose up
+CMD command in '/survey' directory : docker compose up
 
 # Endpoints
 http://localhost:8080/swagger-ui/
